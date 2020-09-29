@@ -7,7 +7,8 @@
  * Author:      Benedikt Bergmann
  * Author URI:  https://benediktbergmann.eu
  * Text Domain: Auto-Anchor 
- * License:     GPL2
+ * License: GPLv3 or later
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  */
 
 	//Solution comes from https://jeroensormani.com/automatically-add-ids-to-your-headings/
