@@ -5,3 +5,9 @@ The style is inspired by the current Microsoft docs ([Example](https://docs.micr
 
 ## Dependencies
 This Plugin has one dependency to the official "Font Awesome" plugin. You can find this [here](https://wordpress.org/plugins/font-awesome/)
+
+## Author
+The Author of this Plugin is [Benedikt Bergmann](https://benediktbergmann.eu)
+
+## Disclaimer
+Use this Plugin at your own risk. The Author can not be held responsible for any damage or in any other way.
