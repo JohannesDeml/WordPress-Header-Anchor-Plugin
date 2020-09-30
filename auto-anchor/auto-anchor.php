@@ -7,24 +7,65 @@
  * Author:      Benedikt Bergmann
  * Author URI:  https://benediktbergmann.eu
  * Text Domain: Auto-Anchor 
- * License: GPLv3 or later
- * License URI: https://www.gnu.org/licenses/gpl-3.0.html
+ * License:     GPL3
  */
 
-	//Solution comes from https://jeroensormani.com/automatically-add-ids-to-your-headings/
+	class addAnchorClass{
+		public $inputintern;
+        public $addedIDs;
+        
+        function __construct($input)
+        {
+            $this->inputintern = $input;
+            $this->addedIDs = array();
+        }
+
+        function custom_callback($matches) {            
+            $id = '';
+            
+			$matches[1] = str_replace($matches[2], "", $matches[1]);
+
+			if(stripos($matches[0], 'id=')){
+				$array = array();
+				preg_match( '/id="([^"]*)"/i', $matches[0], $array ) ;
+				$id = strtolower($array[1]);
+
+				$matches[2] = str_replace($array[0], "", $matches[2]);
+
+			}
+			else{
+				$id = strtolower($matches[3]);
+			}
+
+			$idWithoutIdentifier = $id;
+			$idnumber = 1;
+			while(stripos(strtolower($this->inputintern), strtolower('id="' . $id . '"')) || in_array ( $id, $this->addedIDs )){
+				$id = $idWithoutIdentifier . '-' . $idnumber;
+				$idnumber++;
+			}
+			
+			if($id != ''){
+			    array_push($this->addedIDs, $id);
+			}
+
+			if($id != ''){
+				$heading_link = '<a href="#' . $id . '" class="heading-anchor-link"><i class="fas fa-link"></i></a>';
+				$matches[0] = $matches[1] . ' id="' . $id . '" '. $matches[2]. '>' . $heading_link . $matches[3] . $matches[4];
+			}
+
+			return $matches[0];
+		}
+	}
+
+	//Initial Solution comes from https://jeroensormani.com/automatically-add-ids-to-your-headings/
 
 	function add_anchors_to_headings( $content ) {
 
-	  $content = preg_replace_callback( '/(\<h[1-6](.*?))\>(.*)(<\/h[1-6]>)/i', function( $matches ) {
-	    if ( ! stripos( $matches[0], 'id=' ) ) :
-	      $heading_link = '<a href="#' . sanitize_title( $matches[3] ) . '" class="heading-anchor-link"><i class="fas fa-link"></i></a>';
-	      $matches[0] = $matches[1] . $matches[2] . ' id="' . sanitize_title( $matches[3] ) . '">' . $heading_link . $matches[3] . $matches[4];
-	    endif;
+		$instance = new addAnchorClass($content);
 
-	    return $matches[0];
-	  }, $content );
+		$content = preg_replace_callback('/(\<h[2-6](.*?))\>(.*)(<\/h[2-6]>)/i', array($instance, 'custom_callback'), $content );
 
-	    return $content;
+		return $content;
 
 	}
 	add_filter( 'the_content', 'add_anchors_to_headings' );
