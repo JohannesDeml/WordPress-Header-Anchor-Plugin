@@ -10,18 +10,18 @@
  * License:     GPL3
  */
 
-	class addAnchorClass{
+	class AutoAnchor_addAnchorClass{
 		public $inputintern;
-        public $addedIDs;
-        
-        function __construct($input)
-        {
-            $this->inputintern = $input;
-            $this->addedIDs = array();
-        }
+		public $addedIDs;
 
-        function custom_callback($matches) {            
-            $id = '';
+		function __construct($input)
+		{
+		    $this->inputintern = $input;
+		    $this->addedIDs = array();
+		}
+
+		function custom_callback($matches) {            
+		    $id = '';
             
 			$matches[1] = str_replace($matches[2], "", $matches[1]);
 
@@ -59,26 +59,25 @@
 
 	//Initial Solution comes from https://jeroensormani.com/automatically-add-ids-to-your-headings/
 
-	function add_anchors_to_headings( $content ) {
+	function AutoAnchor_add_anchors_to_headings( $content ) {
 
-		$instance = new addAnchorClass($content);
+		$instance = new AutoAnchor_addAnchorClass($content);
 
 		$content = preg_replace_callback('/(\<h[2-6](.*?))\>(.*)(<\/h[2-6]>)/i', array($instance, 'custom_callback'), $content );
 
 		return $content;
 
 	}
-	add_filter( 'the_content', 'add_anchors_to_headings' );
+	add_filter( 'the_content', 'AutoAnchor_add_anchors_to_headings' );
 
-	function add_anchor_css_file(){
+	function AutoAnchor_add_anchor_css_file(){
 	    wp_enqueue_style( 'anchor-style', plugins_url('/assets/style.css', __FILE__), false, '1.0.0', 'all');
 	}
-	add_action('wp_enqueue_scripts', "add_anchor_css_file");
+	add_action('wp_enqueue_scripts', "AutoAnchor_add_anchor_css_file");
 
-	add_action( 'admin_init', 'plugin_has_required_plugin' );
-	function plugin_has_required_plugin() {
+	function AutoAnchor_plugin_has_required_plugin() {
 	    if ( is_admin() && current_user_can( 'activate_plugins' ) &&  !is_plugin_active( 'font-awesome/index.php' ) ) {
-	        add_action( 'admin_notices', 'child_plugin_notice' );
+	        add_action( 'admin_notices', 'AutoAnchor_child_plugin_notice' );
 
 	        deactivate_plugins( plugin_basename( __FILE__ ) ); 
 
@@ -87,8 +86,9 @@
 	        }
 	    }
 	}
+	add_action( 'admin_init', 'AutoAnchor_plugin_has_required_plugin' );
 
-	function child_plugin_notice(){
+	function AutoAnchor_child_plugin_notice(){
 	    ?><div class="error"><p>Sorry, but "Auto Anchor" Plugin requires the "<a href="https://wordpress.org/plugins/font-awesome/" target="_blank">Font Awesome</a>" plugin to be installed and active.</p></div><?php
 	}
 ?>
