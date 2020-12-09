@@ -35,6 +35,12 @@
 			}
 			else{
 				$id = strtolower($matches[3]);
+				//Replacing space with underscore
+				$id = preg_replace('/\s+/', '_', $id);
+				//Deleting special characters
+				$id = str_replace(array('!', '?', '.', ',', '\\', '/', '<', '>', '(', ')', '[', ']', '{', '}'), '', $id);
+				//Deleting umlaut
+				$id = iconv('UTF-8', 'ISO-8859-1//TRANSLIT//IGNORE', $id);
 			}
 
 			$idWithoutIdentifier = $id;
@@ -45,10 +51,7 @@
 			}
 			
 			if($id != ''){
-			    array_push($this->addedIDs, $id);
-			}
-
-			if($id != ''){
+				array_push($this->addedIDs, $id);
 				$heading_link = '<a href="#' . $id . '" class="heading-anchor-link"><i class="fas fa-link"></i></a>';
 				$matches[0] = $matches[1] . ' id="' . $id . '" '. $matches[2]. '>' . $heading_link . $matches[3] . $matches[4];
 			}
