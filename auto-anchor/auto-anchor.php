@@ -3,7 +3,7 @@
  * Plugin Name: Auto Anchor
  * Plugin URI:  https://github.com/BenediktBergmann/WordPress-Anchor-Plugin
  * Description: Adds anchors to every header in a MS doc look.
- * Version:     1.2.1
+ * Version:     1.2.2
  * Author:      Benedikt Bergmann
  * Author URI:  https://benediktbergmann.eu
  * Text Domain: Auto-Anchor 
