@@ -3,7 +3,7 @@
  * Plugin Name: Auto Anchor
  * Plugin URI:  https://github.com/BenediktBergmann/WordPress-Anchor-Plugin
  * Description: Adds anchors to every header in a MS doc look.
- * Version:     1.2.2
+ * Version:     1.1.3
  * Author:      Benedikt Bergmann
  * Author URI:  https://benediktbergmann.eu
  * Text Domain: Auto-Anchor 
@@ -45,10 +45,15 @@
 
 			$idWithoutIdentifier = $id;
 			$idnumber = 1;
-			while(stripos(strtolower($this->inputintern), strtolower('id="' . $id . '"')) || in_array ( $id, $this->addedIDs )){
-				$id = $idWithoutIdentifier . '-' . $idnumber;
-				$idnumber++;
+			if(substr_count(strtolower($this->inputintern), strtolower('id="' . $id . '"')) > 1){
+				while(stripos(strtolower($this->inputintern), strtolower('id="' . $id . '"')) || in_array ( $id, $this->addedIDs )){
+					if($idnumber != 1){
+						$id = $idWithoutIdentifier . '-' . $idnumber;
+					}
+					$idnumber++;
+				}
 			}
+			
 			
 			if($id != ''){
 				array_push($this->addedIDs, $id);
