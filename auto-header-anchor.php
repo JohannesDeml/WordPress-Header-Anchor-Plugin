@@ -2,11 +2,10 @@
 /**
  * Plugin Name: Auto Header Anchor
  * Plugin URI:  https://github.com/JohannesDeml/WordPress-Header-Anchor-Plugin
- * Description: Adds anchors to every header in a MS doc look.
- * If the header already has a custom anchor text defined, that one is taken, otherwise it is generated from the header text.
+ * Description: Generates anchor links for all headings if not present and shows a clickable icon upon hovering over a heading
  * Version:     2.0.0
  * Author:      Benedikt Bergmann, Johannes Deml
- * Author URI:  https://benediktbergmann.eu
+ * Author URI:  https://deml.io
  * Text Domain: Auto-Header-Anchor
  * License:     GPL3
  */
