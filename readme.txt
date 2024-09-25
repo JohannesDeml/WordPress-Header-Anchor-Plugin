@@ -1,5 +1,5 @@
-=== Auto Anchor ===
-Contributors: Benedikt Bergmann
+=== Auto Header Anchor ===
+Contributors: Benedikt Bergmann, Johannes Deml
 Stable tag: 1.2.5
 Tags: anchor, auto, headers
 Requires at least: 5.4
@@ -9,7 +9,7 @@ License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 == Description ==
-Auto Anchor is a WordPress plugin. It adds an HTML anchor to every Header-tag (h2-h6) and shows a small chain icon on the side when one is hovering over the anchor. The icon is also a link that contains a direkt link to the specific header.
+Auto Header Anchor is a WordPress plugin. It adds an HTML anchor to every Header-tag (h2-h6) and shows a small chain icon on the side when one is hovering over the anchor. The icon is also a link that contains a direkt link to the specific header.
 
 The style is inspired by the current Microsoft docs ([Example](https://docs.microsoft.com/en-us/power-platform/alm/overview-alm#what-is-alm))
 

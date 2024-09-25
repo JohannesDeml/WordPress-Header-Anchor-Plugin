@@ -5,13 +5,15 @@ h3 a.heading-anchor-link,
 h4 a.heading-anchor-link,
 h5 a.heading-anchor-link,
 h6 a.heading-anchor-link{
-	opacity:0;
+	opacity: 0;
 	font-size: 1rem;
-    position: absolute;
-    left: 10px;
-    transition: opacity 0.2s linear;
+	position: relative;
+	left: -5px;
+	transition: opacity 0.2s linear;
+	top: 0px;
 }
 
+h1:hover a.heading-anchor-link,
 h2:hover a.heading-anchor-link,
 h3:hover a.heading-anchor-link,
 h4:hover a.heading-anchor-link,
@@ -20,6 +22,7 @@ h6:hover a.heading-anchor-link{
 	opacity:0.7;
 }
 
+h1:hover a.heading-anchor-link:hover,
 h2:hover a.heading-anchor-link:hover,
 h3:hover a.heading-anchor-link:hover,
 h4:hover a.heading-anchor-link:hover,
