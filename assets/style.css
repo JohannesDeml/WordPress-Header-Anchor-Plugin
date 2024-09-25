@@ -1,16 +1,30 @@
+/* Needed to be able to use absolute positioning of child */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	position: relative;
+}
+
+
 /*Handle anchors*/
 h1 a.heading-anchor-link,
 h2 a.heading-anchor-link,
 h3 a.heading-anchor-link,
 h4 a.heading-anchor-link,
 h5 a.heading-anchor-link,
-h6 a.heading-anchor-link{
-	opacity: 0;
+h6 a.heading-anchor-link {
+	position: absolute;
+	top: 50%;
+	left: -1.2rem;
 	font-size: 1rem;
-	position: relative;
-	left: -5px;
+	margin: auto;
+	opacity: 0;
+	text-decoration: none;
+	transform: translate(-50%, -50%);
 	transition: opacity 0.2s linear;
-	top: 0px;
 }
 
 h1:hover a.heading-anchor-link,
@@ -18,8 +32,8 @@ h2:hover a.heading-anchor-link,
 h3:hover a.heading-anchor-link,
 h4:hover a.heading-anchor-link,
 h5:hover a.heading-anchor-link,
-h6:hover a.heading-anchor-link{
-	opacity:0.7;
+h6:hover a.heading-anchor-link {
+	opacity: 0.7;
 }
 
 h1:hover a.heading-anchor-link:hover,
@@ -27,6 +41,6 @@ h2:hover a.heading-anchor-link:hover,
 h3:hover a.heading-anchor-link:hover,
 h4:hover a.heading-anchor-link:hover,
 h5:hover a.heading-anchor-link:hover,
-h6:hover a.heading-anchor-link:hover{
-	opacity:0.9;
+h6:hover a.heading-anchor-link:hover {
+	opacity: 0.9;
 }
