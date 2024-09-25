@@ -18,13 +18,14 @@ h5 a.heading-anchor-link,
 h6 a.heading-anchor-link {
 	position: absolute;
 	top: 50%;
-	left: -1.2rem;
+	left: -1.1rem;
 	font-size: 1rem;
 	margin: auto;
 	opacity: 0;
 	text-decoration: none;
 	transform: translate(-50%, -50%);
 	transition: opacity 0.2s linear;
+	z-index: 10000;
 }
 
 h1:hover a.heading-anchor-link,
